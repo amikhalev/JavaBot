@@ -1,6 +1,6 @@
 package org.teamtators.tankdrive.commands;
 
-import org.teamtators.tankdrive.R;
+import static org.teamtators.tankdrive.Robot.*;
 import org.teamtators.tankdrive.subsystems.DriveMode;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -15,17 +15,17 @@ public class DriveTeleop extends Command {
 	}
 
 	protected void initialize() {
-		R.drive.setDriveMode(DriveMode.PID);
+		drive.setDriveMode(DriveMode.PID);
 	}
 	
 	protected void execute() {
-		double left = R.oi.getDriveLeft();
-		double right = R.oi.getDriveRight();
-		
+		double left = oi.getDriveLeft();
+		double right = oi.getDriveRight();
+
 		left = exponent(deadzone(left, .05), 2.0);
 		right = exponent(deadzone(right, .05), 2.0);
-		
-		R.drive.setSpeeds(left, right);
+
+		drive.setSpeeds(left, right);
 	}
 
 	protected boolean isFinished() {
