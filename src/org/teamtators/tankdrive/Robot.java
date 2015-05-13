@@ -1,6 +1,5 @@
 package org.teamtators.tankdrive;
 
-
 import org.teamtators.tankdrive.commands.DriveTeleop;
 import org.teamtators.tankdrive.subsystems.Drive;
 import org.teamtators.tankdrive.subsystems.OperatorInterface;
@@ -18,7 +17,7 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 
 	private Scheduler scheduler = Scheduler.getInstance();
-	
+
 	public Robot() {
 		super();
 	}
@@ -58,5 +57,5 @@ public class Robot extends IterativeRobot {
 
 	public void testPeriodic() {
 	}
-	
+
 }

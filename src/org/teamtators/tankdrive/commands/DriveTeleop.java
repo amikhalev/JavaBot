@@ -17,7 +17,7 @@ public class DriveTeleop extends Command {
 	protected void initialize() {
 		drive.setDriveMode(DriveMode.PID);
 	}
-	
+
 	protected void execute() {
 		double left = oi.getDriveLeft();
 		double right = oi.getDriveRight();
@@ -33,18 +33,21 @@ public class DriveTeleop extends Command {
 	}
 
 	protected void end() {
-		R.drive.setSpeeds(0, 0);
+		drive.setSpeeds(0, 0);
 	}
 
 	protected void interrupted() {
-		R.drive.setSpeeds(0, 0);
+		drive.setSpeeds(0, 0);
 	}
-	
+
 	/**
 	 * Applys a deadzone to a joystick value
-	 * @param input The input joystick value
-	 * @param deadzone The maximum magnitude for the joystick value before it is
-	 * deadzoned
+	 * 
+	 * @param input
+	 *            The input joystick value
+	 * @param deadzone
+	 *            The maximum magnitude for the joystick value before it is
+	 *            deadzoned
 	 * @return The deadzoned value
 	 */
 	private double deadzone(double input, double deadzone) {
@@ -53,11 +56,14 @@ public class DriveTeleop extends Command {
 		}
 		return input;
 	}
-	
+
 	/**
 	 * Applys an exponent to a joystick value, preserving sign
-	 * @param input The input joystick value
-	 * @param exponent The exponent to apply
+	 * 
+	 * @param input
+	 *            The input joystick value
+	 * @param exponent
+	 *            The exponent to apply
 	 * @return The value with exponent applied
 	 */
 	private double exponent(double input, double exponent) {

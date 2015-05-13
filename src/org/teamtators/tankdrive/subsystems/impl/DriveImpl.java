@@ -20,28 +20,30 @@ public class DriveImpl implements Drive {
 	private final PIDController leftController;
 	private final PIDController rightController;
 	private final double maxRPS;
-	
+
 	private DriveMode driveMode;
-	
+
 	public DriveImpl() {
 		leftMotor = new Talon(0);
 		rightMotor = new Talon(1);
-		
+
 		leftEncoder = new Encoder(0, 1);
 		rightEncoder = new Encoder(2, 3);
 		leftEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
 		rightEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
 		leftEncoder.setDistancePerPulse(1.0 / 360.0);
 		rightEncoder.setDistancePerPulse(1.0 / 360.0);
-		 
-		leftController = new PIDController(.02, 0.0, 0.0, leftEncoder, leftMotor);
-		rightController = new PIDController(.02, 0.0, 0.0, rightEncoder, rightMotor);
-		
+
+		leftController = new PIDController(.02, 0.0, 0.0, leftEncoder,
+				leftMotor);
+		rightController = new PIDController(.02, 0.0, 0.0, rightEncoder,
+				rightMotor);
+
 		maxRPS = 20.0;
-		
+
 		driveMode = DriveMode.PID;
 	}
-	
+
 	@Override
 	public void setSpeedsRPS(double leftRPS, double rightRPS) {
 		leftController.setSetpoint(leftRPS);
